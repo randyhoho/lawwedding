@@ -6,7 +6,7 @@ const PORT = 8080;
 
 app.use('/', express.static('public'))
 app.get('/', function(req:Request, res:Response) {
-    res.redirect(path.join('/Gloria and Dany - Me and Mory.html'));
+    res.redirect(path.join('/jannaandlaw.html'));
   });
 
 
