@@ -8,7 +8,7 @@ app.use('/', express.static('public'))
 app.get('/', function(req:Request, res:Response) {
     res.redirect(path.join('/jannaandlaw.html'));
   });
-// ok
+// o
 
 app.listen(PORT, () => {
     console.log(`Listening at http://localhost:${PORT}/`);
