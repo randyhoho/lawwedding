@@ -21,6 +21,7 @@
     "express-session": "^1.17.2",
     "grant": "^5.4.16",
     "jsonfile": "^6.1.0",
+    "medium-zoom": "^1.0.6",
     "node-fetch": "^2.6.1",
     "ts-node": "^10.2.1",
     "ts-node-dev": "^1.1.8",

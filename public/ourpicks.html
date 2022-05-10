@@ -1021,6 +1021,53 @@
 		div.berocket_single_filter_widget.berocket_hidden_clickable .bapf_sfilter .bapf_body {
 			font-size: h5px !important;
 		}
+
+		/* (A) LIGHTBOX BACKGROUND */
+#lightbox {
+  /* (A1) COVERS FULLSCREEN */
+  position: fixed; z-index: 999;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+ 
+  /* (A2) BACKGROUND */
+  background: rgba(0, 0, 0, 0.5);
+ 
+  /* (A3) CENTER IMAGE ON SCREEN */
+  display: flex;
+  align-items: center;
+  align-items: center;
+ 
+  /* (A4) HIDDEN BY DEFAULT */
+  visibility: hidden;
+  opacity: 0;
+ 
+  /* (A5) SHOW/HIDE ANIMATION */
+  transition: opacity ease 0.4s;
+}
+ 
+/* (A6) TOGGLE VISIBILITY */
+#lightbox.show {
+  visibility: visible;
+  opacity: 1;
+}
+ 
+/* (B) LIGHTBOX IMAGE */
+#lightbox img {
+  /* (B1) DIMENSIONS */
+  width: 100%;
+  height: auto;
+ 
+  /* (B2) IMAGE FIT */
+  /* contain | cover | fill | scale-down */
+  object-fit: cover;
+}
+ 
+/* (C) LIGHTBOX IMAGE - FULLSCREEN ALTERNATIVE */
+#lightbox img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
 	</style>
 </head>
 
@@ -1447,9 +1494,13 @@
 																			class="wpb_single_image wpb_content_element vc_align_center  vc_custom_1599498529374">
 																			<img width="1500" height="1000"
 																				src="./image/op0.jpg"
-																				class="vc_single_image-img attachment-full"
-																				alt="" loading="lazy">
+																				class="vc_single_image-img attachment-full zoomD"
+																				alt="" loading="lazy" >
 																		</div>
+																		<!--  -->
+																		<div id="lightbox"></div>
+
+																			<!--  -->
 																		<div class="vc_empty_space"
 																			style="height: 20px"><span
 																				class="vc_empty_space_inner"></span>
@@ -1458,7 +1509,7 @@
 																			class="wpb_single_image wpb_content_element vc_align_center  vc_custom_1599498529374">
 																			<img width="1500" height="1000"
 																				src="./image/op1.jpg"
-																				class="vc_single_image-img attachment-full"
+																				class="vc_single_image-img attachment-full zoomD"
 																				alt="" loading="lazy">
 																		</div>
 																		<div class="vc_empty_space"
@@ -1469,7 +1520,7 @@
 																			class="wpb_single_image wpb_content_element vc_align_center  vc_custom_1599498529374">
 																			<img width="1500" height="1000"
 																				src="./image/op2.jpg"
-																				class="vc_single_image-img attachment-full"
+																				class="vc_single_image-img attachment-full zoomD"
 																				alt="" loading="lazy">
 																		</div>
 																		<div class="vc_empty_space"
@@ -1677,7 +1728,32 @@
 							jQuery(document).on("berocket_aapf_time_to_fix_products_style", function () {
 								jQuery(the_ajax_script.products_holder_id).find("*").filter(function () { return jQuery(this).css("opacity") == "0"; }).css("opacity", 1);
 							});
+
+							window.onload = () => {
+								// (A) GET LIGHTBOX & ALL .ZOOMD IMAGES
+								let all = document.getElementsByClassName("zoomD"),
+									lightbox = document.getElementById("lightbox");
+							   
+								// (B) CLICK TO SHOW IMAGE IN LIGHTBOX
+								// * SIMPLY CLONE INTO LIGHTBOX & SHOW
+								if (all.length>0) { for (let i of all) {
+								  i.onclick = () => {
+									let clone = i.cloneNode();
+									clone.className = "";
+									lightbox.innerHTML = "";
+									lightbox.appendChild(clone);
+									lightbox.className = "show";
+								  };
+								}}
+							   
+								// (C) CLICK TO CLOSE LIGHTBOX
+								lightbox.onclick = () => {
+								  lightbox.className = "";
+								};
+							  };
 						</script>
+						
+						
 
 </body>
 
