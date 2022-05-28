@@ -465,14 +465,14 @@
 	</noscript>
 	<!-- End Facebook Pixel Code -->
 	<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress.">
-	<link rel="icon" href="https://meandmory.com/wp-content/uploads/2020/08/cropped-Websitelogo-01-1-32x32.jpg"
+	<!-- <link rel="icon" href="https://meandmory.com/wp-content/uploads/2020/08/cropped-Websitelogo-01-1-32x32.jpg"
 		sizes="32x32">
 	<link rel="icon" href="https://meandmory.com/wp-content/uploads/2020/08/cropped-Websitelogo-01-1-192x192.jpg"
 		sizes="192x192">
 	<link rel="apple-touch-icon"
 		href="https://meandmory.com/wp-content/uploads/2020/08/cropped-Websitelogo-01-1-180x180.jpg">
 	<meta name="msapplication-TileImage"
-		content="https://meandmory.com/wp-content/uploads/2020/08/cropped-Websitelogo-01-1-270x270.jpg">
+		content="https://meandmory.com/wp-content/uploads/2020/08/cropped-Websitelogo-01-1-270x270.jpg"> -->
 	<style type="text/css" id="wp-custom-css">
 		.wp-image-1921 {
 			vertical-align: bottom;
@@ -1494,7 +1494,7 @@
 																			class="wpb_single_image wpb_content_element vc_align_center  vc_custom_1599498529374">
 																			<img width="1500" height="1000"
 																				src="./image/op0.jpg"
-																				class="vc_single_image-img attachment-full zoomD"
+																				class="vc_single_image-img attachment-full zoomD img-zoomable"
 																				alt="" loading="lazy" >
 																		</div>
 																		<!--  -->
@@ -1509,7 +1509,7 @@
 																			class="wpb_single_image wpb_content_element vc_align_center  vc_custom_1599498529374">
 																			<img width="1500" height="1000"
 																				src="./image/op1.jpg"
-																				class="vc_single_image-img attachment-full zoomD"
+																				class="vc_single_image-img attachment-full zoomD img-zoomable"
 																				alt="" loading="lazy">
 																		</div>
 																		<div class="vc_empty_space"
@@ -1520,7 +1520,7 @@
 																			class="wpb_single_image wpb_content_element vc_align_center  vc_custom_1599498529374">
 																			<img width="1500" height="1000"
 																				src="./image/op2.jpg"
-																				class="vc_single_image-img attachment-full zoomD"
+																				class="vc_single_image-img attachment-full zoomD img-zoomable"
 																				alt="" loading="lazy">
 																		</div>
 																		<div class="vc_empty_space"
@@ -1728,30 +1728,12 @@
 							jQuery(document).on("berocket_aapf_time_to_fix_products_style", function () {
 								jQuery(the_ajax_script.products_holder_id).find("*").filter(function () { return jQuery(this).css("opacity") == "0"; }).css("opacity", 1);
 							});
-
-							window.onload = () => {
-								// (A) GET LIGHTBOX & ALL .ZOOMD IMAGES
-								let all = document.getElementsByClassName("zoomD"),
-									lightbox = document.getElementById("lightbox");
-							   
-								// (B) CLICK TO SHOW IMAGE IN LIGHTBOX
-								// * SIMPLY CLONE INTO LIGHTBOX & SHOW
-								if (all.length>0) { for (let i of all) {
-								  i.onclick = () => {
-									let clone = i.cloneNode();
-									clone.className = "";
-									lightbox.innerHTML = "";
-									lightbox.appendChild(clone);
-									lightbox.className = "show";
-								  };
-								}}
-							   
-								// (C) CLICK TO CLOSE LIGHTBOX
-								lightbox.onclick = () => {
-								  lightbox.className = "";
-								};
-							  };
 						</script>
+						<script src="https://unpkg.com/zooming/build/zooming.min.js"></script>
+         <script> 
+             const zooming = new Zooming({})
+             zooming.listen('.img-zoomable')
+			</script>
 						
 						
 
